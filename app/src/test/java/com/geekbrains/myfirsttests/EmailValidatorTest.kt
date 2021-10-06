@@ -37,6 +37,21 @@ class EmailValidatorTest {
     }
 
     @Test
+    fun emailValidator_WithoutDomain_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("test@.ru"))
+    }
+
+    @Test
+    fun emailValidator_WithoutDomain2_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("test@ .ru"))
+    }
+
+    @Test
+    fun emailValidator_WithoutDomain3_ReturnsFalse() {
+        assertTrue(EmailValidator.isValidEmail("nest@a.ru"))
+    }
+
+    @Test
     fun emailValidator_NullEmail_ReturnsFalse() {
         assertFalse(EmailValidator.isValidEmail(null))
     }
